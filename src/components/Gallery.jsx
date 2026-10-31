@@ -1,5 +1,6 @@
 import useFetchPhotos from '../hooks/useFetchPhotos'
 import ErrorMessage from './ErrorMessage'
+import PhotoGrid from './PhotoGrid'
 import Spinner from './Spinner'
 
 function Gallery() {
@@ -8,7 +9,7 @@ function Gallery() {
   if (loading) return <Spinner />
   if (error) return <ErrorMessage message={error} />
 
-  return <p className="animate-rise mt-8 text-muted">{photos.length} photos</p>
+  return <PhotoGrid photos={photos} />
 }
 
 export default Gallery
