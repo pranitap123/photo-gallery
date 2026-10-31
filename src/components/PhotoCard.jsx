@@ -1,4 +1,6 @@
-function PhotoCard({ photo }) {
+import { memo } from 'react'
+
+function PhotoCard({ photo, isFavourite, onToggleFavourite }) {
   return (
     <article className="overflow-hidden rounded-2xl border border-line bg-card">
       <img
@@ -13,12 +15,16 @@ function PhotoCard({ photo }) {
         <p className="truncate text-sm font-medium">{photo.author}</p>
         <button
           type="button"
-          aria-label={`Add photo by ${photo.author} to favourites`}
-          className="flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted hover:text-heart focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heart"
+          onClick={() => onToggleFavourite(photo.id)}
+          aria-pressed={isFavourite}
+          aria-label={`Favourite photo by ${photo.author}`}
+          className={`flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full hover:text-heart focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-heart ${
+            isFavourite ? 'text-heart' : 'text-muted'
+          }`}
         >
           <svg
             viewBox="0 0 24 24"
-            fill="none"
+            fill={isFavourite ? 'currentColor' : 'none'}
             stroke="currentColor"
             strokeWidth="1.8"
             strokeLinejoin="round"
@@ -33,4 +39,4 @@ function PhotoCard({ photo }) {
   )
 }
 
-export default PhotoCard
+export default memo(PhotoCard)
