@@ -2,7 +2,7 @@ import { memo } from 'react'
 
 function SearchBar({ value, onChange }) {
   return (
-    <div className="relative mt-8 max-w-md">
+    <div className="relative mt-8 max-w-md animate-rise [animation-delay:240ms]">
       <label htmlFor="author-search" className="sr-only">
         Search photos by author
       </label>
@@ -25,7 +25,7 @@ function SearchBar({ value, onChange }) {
         onChange={onChange}
         placeholder="Search by author"
         autoComplete="off"
-        className="w-full rounded-full border border-line bg-card py-3 pr-5 pl-12 placeholder:text-muted focus:border-heart focus:outline-none"
+        className="w-full rounded-full border border-line bg-card py-3 pr-5 pl-12 transition-[border-color,box-shadow] duration-300 placeholder:text-muted focus:border-heart focus:shadow-lg focus:shadow-heart/15 focus:outline-none"
       />
     </div>
   )
